@@ -131,10 +131,8 @@ int main( int, char** argv ) {
 		auto m = dis( gen );
 		counts[m]++;
 		results[m] += daw::benchmark( [&]( ) {
-				for( intmax_t n = 1; n<count; ++n ) {
-				tests[m]( count );
-				}
-				} );
+			tests[m]( count*count*2 );
+		} );
 	}
 	for( size_t m = 0; m<results.size( ); ++m ) {
 		size_t calls = count*counts[m];

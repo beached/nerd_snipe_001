@@ -11,15 +11,15 @@ if( n % 2 == 0 ) {
 
 Compiled with g++ -O3 -march=native benchmark.cpp and the results are consitantly around when run with ./a.out 1500
 ```
-a-> 'Darrell Wright': 641.163ms for 268500 calls 2.38794μs per item
-b-> 'Darrell Wright': 649.209ms for 252000 calls 2.57623μs per item
-c-> 'Darrell Wright': 603.261ms for 276000 calls 2.18573μs per item
-d-> 'Arnold Kim': 276.678ms for 238500 calls 1.16008μs per item
-e-> 'Original': 478.79ms for 222000 calls 2.15671μs per item
-f-> 'Shaun Winters - A': 341.268ms for 262500 calls 1.30007μs per item
-g-> 'Matt Bryan - A': 429.867ms for 235500 calls 1.82534μs per item
-h-> 'Matt Bryan - B': 456.949ms for 247500 calls 1.84626μs per item
-i-> 'Shaun Winters - B': 2857.5ms for 247500 calls 11.5455μs per item
+a-> 'Darrell Wright': 1199.53ms for 244500 calls 4.90606μs per item
+b-> 'Darrell Wright': 1332.5ms for 264000 calls 5.04736μs per item
+c-> 'Darrell Wright': 1051.46ms for 243000 calls 4.327μs per item
+d-> 'Arnold Kim': 663.334ms for 276000 calls 2.40338μs per item
+e-> 'Original': 959.478ms for 222000 calls 4.32197μs per item
+f-> 'Shaun Winters - A': 678.823ms for 255000 calls 2.66205μs per item
+g-> 'Matt Bryan - A': 884.76ms for 244500 calls 3.61865μs per item
+h-> 'Matt Bryan - B': 864.59ms for 238500 calls 3.62512μs per item
+i-> 'Shaun Winters - B': 6325.32ms for 262500 calls 24.0964μs per item
 ```
 See [Arnold's Explanation](./arnolds_explanation.jpeg) for a description of his approach
 
