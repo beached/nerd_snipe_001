@@ -7,9 +7,10 @@ if( n % 2 == 0 ) {
 } else {
     result = 7 - n/2;
 }
-
+```
 
 Compiled with g++ -O3 -march=native benchmark.cpp and the results are consitantly around when run with ./a.out 1500
+```
 0: 970.898ms for 263 calls 3.69163ms per item
 1: 887.943ms for 231 calls 3.84391ms per item
 2: 800.963ms for 241 calls 3.3235ms per item
