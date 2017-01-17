@@ -22,6 +22,7 @@ h-> 'Matt Bryan - B': 456.949ms for 247500 calls 1.84626μs per item
 i-> 'Shaun Winters - B': 2857.5ms for 247500 calls 11.5455μs per item
 ```
 See [Arnold's Explanation](./arnolds_explanation.jpeg) for a description of his approach
+
 Matt Bryan's approach was:
 ```
 EVEN
