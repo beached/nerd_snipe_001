@@ -90,7 +90,8 @@ int main( int argc, char** argv ) {
 				} );
 	}
 	for( size_t m=0; m<results.size( ); ++m ) {
-		std::cout << m << ": " << results[m]*1000.0 << "ms for " << counts[m] << " calls " << (results[m]/(double)counts[m])*1000.0 << "ms per item\n";
+		size_t calls = count*counts[m];
+		std::cout << m << ": " << results[m]*1000.0 << "ms for " << calls << " calls " << (results[m]/(double)calls)*1000000.0 << "μs per item\n";
 	}
 	return EXIT_SUCCESS;
 }

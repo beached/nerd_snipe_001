@@ -11,10 +11,10 @@ if( n % 2 == 0 ) {
 
 Compiled with g++ -O3 -march=native benchmark.cpp and the results are consitantly around when run with ./a.out 1500
 ```
-0: 970.898ms for 263 calls 3.69163ms per item
-1: 887.943ms for 231 calls 3.84391ms per item
-2: 800.963ms for 241 calls 3.3235ms per item
-3: 492.842ms for 279 calls 1.76646ms per item
-4: 804.387ms for 246 calls 3.26987ms per item
-5: 474.916ms for 240 calls 1.97882ms per item
+0: 838.988ms for 321000 calls 2.61367μs per item
+1: 932.733ms for 370500 calls 2.5175μs per item
+2: 853.587ms for 388500 calls 2.19714μs per item
+3: 487.332ms for 412500 calls 1.18141μs per item
+4: 817.144ms for 378000 calls 2.16176μs per item
+5: 509.995ms for 379500 calls 1.34386μs per item
 ```
