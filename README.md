@@ -9,7 +9,7 @@ if( n % 2 == 0 ) {
 }
 
 
-Compiled with g++ -O3 -march=native benchmark.cpp and the results are consitantly around
+Compiled with g++ -O3 -march=native benchmark.cpp and the results are consitantly around when run with ./a.out 1500
 0: 929.987ms
 1: 895.725ms
 2: 851.275ms
