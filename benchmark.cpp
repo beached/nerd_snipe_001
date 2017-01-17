@@ -5,7 +5,7 @@
 #include <iostream>
 #include <random>
 
-#include "daw_benchmark.h"
+#include "benchmark.h"
 
 using value_t = intmax_t;
 
@@ -74,6 +74,7 @@ value_t f( value_t N ) {
 int main( int argc, char** argv ) {
 	intmax_t const count = atoi( argv[1] );	
 	std::array<double, 6> results { 0 };
+	std::array<size_t, 6> counts { 0 };
 	using f_t = value_t(value_t);
 	std::array<std::function<f_t>, 6> tests { &a, &b, &c, &d, &e, &f };
 	std::random_device rd;
@@ -81,6 +82,7 @@ int main( int argc, char** argv ) {
 	std::uniform_int_distribution<> dis(0, results.size( )-1);
 	for( size_t x=0; x<count; ++x ) {
 		auto m = dis(gen);
+		counts[m]++;
 		results[m] += daw::benchmark( [&]( ) {
 				for( intmax_t n=1; n<count; ++n ) {
 				tests[m]( count );
@@ -88,7 +90,7 @@ int main( int argc, char** argv ) {
 				} );
 	}
 	for( size_t m=0; m<results.size( ); ++m ) {
-		std::cout << m << ": " << results[m]*1000.0 << "ms\n";
+		std::cout << m << ": " << results[m]*1000.0 << "ms for " << counts[m] << " calls " << (results[m]/(double)counts[m])*1000.0 << "ms per item\n";
 	}
 	return EXIT_SUCCESS;
 }
