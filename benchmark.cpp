@@ -4,11 +4,14 @@
 #include <functional>
 #include <iostream>
 #include <random>
-
+#include <string>
+#include <vector>
 #include "benchmark.h"
 
 using value_t = intmax_t;
 
+
+// Darrell Wright
 value_t a( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -20,6 +23,7 @@ value_t a( value_t N ) {
 	return result;
 }
 
+// Darrell Wright
 value_t b( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -31,6 +35,7 @@ value_t b( value_t N ) {
 	return result;
 }
 
+// Darrell Wright
 value_t c( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -41,7 +46,7 @@ value_t c( value_t N ) {
 	return result;
 }
 
-
+// Arnold Kim
 value_t d( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -50,7 +55,7 @@ value_t d( value_t N ) {
 	return result;
 }
 
-
+// Original
 value_t e( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -63,6 +68,7 @@ value_t e( value_t N ) {
 	return result;
 }
 
+// Shaun Winters - A
 value_t f( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -71,6 +77,7 @@ value_t f( value_t N ) {
 	return result;
 }
 
+// Matt Bryan - A
 value_t g( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -79,6 +86,7 @@ value_t g( value_t N ) {
 	return result;
 }
 
+// Matt Bryan - B
 value_t h( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
@@ -88,12 +96,34 @@ value_t h( value_t N ) {
 	return result;
 }
 
-int main( int argc, char** argv ) {
+// Shaun Winters - B
+value_t i( value_t N ) {
+	value_t result = 0;
+	for( value_t n = 0; n<N; ++n ) {
+		result += (n & 1) * ((-n - 1) + 0.5) + (n>>1) + 8;
+	}
+	return result;
+}
+
+
+int main( int, char** argv ) {
+	using namespace std::string_literals;
+	std::vector<std::string> const names { 
+		"Darrell Wright"s,
+		"Darrell Wright"s, 
+		"Darrell Wright"s,
+		"Arnold Kim"s,
+		"Original"s,
+		"Shaun Winters - A"s,
+		"Matt Bryan - A"s,
+		"Matt Bryan - B"s,
+		"Shaun Winters - B"s };
+
 	intmax_t const count = atoi( argv[1] );
 	using f_t = value_t( value_t );	
-	std::array<std::function<f_t>, 8> tests { &a, &b, &c, &d, &e, &f, &g, &h };
-	std::array<double, 8> results { 0 };
-	std::array<size_t, 8> counts { 0 };
+	std::array<std::function<f_t>, 9> const tests { &a, &b, &c, &d, &e, &f, &g, &h, &i };
+	std::array<double, 9> results { 0 };
+	std::array<size_t, 9> counts { 0 };
 	std::random_device rd;
 	std::mt19937 gen( rd( ) );
 	std::uniform_int_distribution<> dis( 0, results.size( ) - 1 );
@@ -101,14 +131,14 @@ int main( int argc, char** argv ) {
 		auto m = dis( gen );
 		counts[m]++;
 		results[m] += daw::benchmark( [&]( ) {
-			for( intmax_t n = 1; n<count; ++n ) {
+				for( intmax_t n = 1; n<count; ++n ) {
 				tests[m]( count );
-			}
-		} );
+				}
+				} );
 	}
 	for( size_t m = 0; m<results.size( ); ++m ) {
 		size_t calls = count*counts[m];
-		std::cout << (char)('a' + m) << ": " << results[m] * 1000.0 << "ms for " << calls << " calls " << (results[m] / (double)calls)*1000000.0 << "μs per item\n";
+		std::cout << (char)('a' + m) << "-> '" << names[m] << "': " << results[m] * 1000.0 << "ms for " << calls << " calls " << (results[m] / (double)calls)*1000000.0 << "μs per item\n";
 	}
 	return EXIT_SUCCESS;
 }
