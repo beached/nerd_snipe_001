@@ -21,3 +21,4 @@ g-> 'Matt Bryan - A': 429.867ms for 235500 calls 1.82534μs per item
 h-> 'Matt Bryan - B': 456.949ms for 247500 calls 1.84626μs per item
 i-> 'Shaun Winters - B': 2857.5ms for 247500 calls 11.5455μs per item
 ```
+See [Arnold's Explanation](./arnolds_explanation.jpeg) for a description of his approach
