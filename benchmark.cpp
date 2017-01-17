@@ -50,7 +50,8 @@ value_t c( value_t N ) {
 value_t d( value_t N ) {
 	value_t result = 0;
 	for( value_t n = 0; n<N; ++n ) {
-		result += (8 + (n / 2 * 2) / 2) - (n & 1)*(n);
+		//result += (8 + (n / 2 * 2) / 2) - (n & 1)*(n);
+		result += (8 + ((2*n) / 2) / 2) - (n & 1)*(n);
 	}
 	return result;
 }
