@@ -35,9 +35,9 @@ ODD
 =(14 - n) / 2
 =(14+Zn) / 2 
 =(15 + Z + Zn) / 2
-
+```
 Since we now have an equation that works for both odd and even numbers, all we need is a solution for Z
-
+```
 Z = ((n%2)* -2) + 1 should work
 
 So
